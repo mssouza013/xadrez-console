@@ -2,9 +2,10 @@
 {
     class Tabuleiro
     {
+
         public int linhas { get; set; }
         public int colunas { get; set; }
-        private Peca[,] pecas { get; set; }
+        private Peca[,] pecas;
 
         public Tabuleiro(int linhas, int colunas)
         {
@@ -31,14 +32,17 @@
 
         public void colocarPeca(Peca p, Posicao pos)
         {
-            if (existePeca(pos)) { throw new TabuleiroExeption("Já existe uma peça nesta posição"); }
+            if (existePeca(pos))
+            {
+                throw new TabuleiroException("Já existe uma peça nessa posição!");
+            }
             pecas[pos.linha, pos.coluna] = p;
             p.posicao = pos;
         }
 
-        public Peca retirarPeca (Posicao pos)
+        public Peca retirarPeca(Posicao pos)
         {
-            if (peca(pos) == null) 
+            if (peca(pos) == null)
             {
                 return null;
             }
@@ -61,7 +65,7 @@
         {
             if (!posicaoValida(pos))
             {
-                throw new TabuleiroExeption("Posição invalida!");
+                throw new TabuleiroException("Posição inválida!");
             }
         }
     }
