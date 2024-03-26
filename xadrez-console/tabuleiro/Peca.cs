@@ -1,9 +1,6 @@
-﻿using System.ComponentModel;
-using tabuleiro;
-
-namespace tabuleiro
+﻿namespace tabuleiro
 {
-    class Peca
+    abstract class Peca
     {
         public Posicao posicao { get; set; }
         public Cor cor { get; protected set; }
@@ -17,6 +14,8 @@ namespace tabuleiro
             this.cor = cor;
             this.qteMovimentos = 0;
         }
+
+        public abstract bool[,] movimentosPossiveis();
 
         public void incrementarQteMovimentos()
         {
